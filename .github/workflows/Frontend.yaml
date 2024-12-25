@@ -1,4 +1,4 @@
-name: Deploy to Frontend
+name: Deploy Frontend in ECR
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-south-1
+        aws-region: us-east-1
 
     # Login to Amazon ECR
     - name: Login to Amazon ECR
@@ -37,6 +37,12 @@ jobs:
     # Push Docker image to Amazon ECR
     - name: Push Docker Image to ECR
       run: docker push 761018870862.dkr.ecr.us-east-1.amazonaws.com/frontend:05
+
+    # Authenticate Docker again for local container run (optional)
+    - name: Authenticate Docker with ECR
+      run: |
+        aws ecr get-login-password --region us-east-1 | \
+        docker login --username AWS --password-stdin 761018870862.dkr.ecr.us-east-1.amazonaws.com
 
     # Optionally pull the image to verify it is uploaded
     - name: Pull Docker Image from ECR
