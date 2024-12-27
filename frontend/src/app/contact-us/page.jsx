@@ -64,7 +64,12 @@ const Contact = () => {
               <p className="text-xl font-semibold text-gray-900 mt-3">
                 Email Us
               </p>
-              <p className="text-gray-600 mt-2">info@bluefoxhoster.com</p>
+              <a
+                href="mailto:support@bluefoxhoster.com"
+                className="text-gray-600 mt-2"
+              >
+                support@bluefoxhoster.com
+              </a>
             </div>
 
             {/* Call Us */}
@@ -75,7 +80,10 @@ const Contact = () => {
               <p className="text-xl font-semibold text-gray-900 mt-3">
                 Call Us
               </p>
-              <p className="text-gray-600 mt-2">9802755602 / 9817303073</p>
+              <p className="text-gray-600 mt-2">
+                <a href="tel:9802755602">9802755602</a> /{" "}
+                <a href="tel:9817303073">9817303073</a>
+              </p>
             </div>
 
             {/* Our Location */}
